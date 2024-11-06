@@ -36,7 +36,7 @@ PROXY_PASSWORD=sua_senha
 1. Clone o repositório:
    ```bash
    git clone https://github.com/rafaelwdornelas/clearlistpingsmtp.git
-   cd seu_repositorio
+   cd clearlistpingsmtp
    ```
 
 2. Instale as dependências necessárias:
@@ -54,29 +54,6 @@ Execute o programa passando o email e domínio que deseja verificar:
 go run main.go
 ```
 
-### Exemplo de Código | Code Example
-
-```go
-// Exemplo de função para testar a conexão SMTP
-func testSMTPConnection(mxServer string, port string) error {
-    var conn net.Conn
-    var err error
-
-    if userProxy1 {
-        conn, err = dialWithHTTPProxy("http://"+os.Getenv("PROXY_HOST")+":"+os.Getenv("PROXY_PORT"), os.Getenv("PROXY_USERNAME")+"-zone-resi-region-br", os.Getenv("PROXY_PASSWORD"), mxServer, port)
-    } else {
-        conn, err = net.Dial("tcp", mxServer+":"+port)
-    }
-
-    if err != nil {
-        return fmt.Errorf("Erro ao conectar: %v", err)
-    }
-    defer conn.Close()
-    
-    fmt.Fprintf(conn, "EHLO domain.com\r\n")
-    // Resto da verificação...
-}
-```
 
 ## 📄 Licença | License
 
